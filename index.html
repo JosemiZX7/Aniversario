@@ -1,78 +1,54 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #ffffff; /* Fondo blanco para la página */
-            margin: 0;
-            padding: 0;
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* Fondo blanco para la página */
+    margin: 0;
+    padding: 0;
+}
 
-        .navbar {
-            display: flex;
-            justify-content: flex-start;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
 
-        .navbar a {
-            margin-right: 10px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            padding: 8px 16px;
-            border-radius: 4px;
-            background-color: #f4d03f;
-        }
+.navbar a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #f4d03f;
+}
 
-        .navbar a:hover {
-            background-color: #d4ac0d;
-            color: white;
-        }
+.navbar a:hover {
+    background-color: #d4ac0d;
+    color: white;
+}
 
-        .content {
-            background-image: url('https://i.pinimg.com/564x/01/7d/58/017d588bc7b5fb4ef488e3cf5471d074.jpg'); /* Imagen de pergamino antiguo */
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 0 auto;
-        }
+.content {
+    background-image: url('https://i.pinimg.com/564x/01/7d/58/017d588bc7b5fb4ef488e3cf5471d074.jpg'); /* Imagen de pergamino antiguo */
+    background-size: contain; /* Ajusta la imagen para que se muestre entera */
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 40px; /* Aumenta el padding para dar más espacio al texto */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex; /* Flexbox para centrar el contenido */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+}
 
-        .content div {
-            font-size: 16px;
-            line-height: 1.6;
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente para el texto */
-            padding: 20px;
-            border-radius: 10px;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="navbar">
-        <a href="Recuerdos.html">Recuerdos</a>
-        <a href="Para Tu.html">Para Tu</a>
-    </div>
-
-    <div class="content">
-        <div>
-            <!-- Texto editable solo desde el código -->
-            <p>Bienvenido a nuestra página principal. Aquí puedes encontrar información sobre nuestras diferentes secciones. Si deseas editar este texto, por favor, realiza los cambios directamente en el archivo <code>index.html</code> en el repositorio de GitHub.</p>
-            <p>Para obtener más detalles sobre nuestros recuerdos, visita la sección de <a href="Recuerdos.html">Recuerdos</a>.</p>
-            <p>Para conocer más sobre nuestro spa y su carta de presentación, ve a la sección de <a href="Para Tu.html">Para Tu</a>.</p>
-        </div>
-    </div>
-
-</body>
-</html>
-
+.content div {
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente para el texto */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 100%; /* Ajusta el contenido para que no se salga del contenedor */
+}
