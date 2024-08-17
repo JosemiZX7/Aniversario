@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación del Spa</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: flex-start;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .navbar a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 4px;
+            background-color: #f4d03f;
+        }
+
+        .navbar a:hover {
+            background-color: #d4ac0d;
+            color: white;
+        }
+
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .print-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f4d03f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .print-button:hover {
+            background-color: #d4ac0d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html">Inicio</a>
+        <a href="fotos.html">Fotos</a>
+    </div>
+
+    <div class="content">
+        <h1>Carta de Presentación</h1>
+        <p>Bienvenido a nuestro spa, un lugar donde la tranquilidad y el bienestar son nuestra prioridad. Aquí encontrarás un ambiente sereno y relajante, diseñado para ayudarte a desconectar del estrés diario y recargar energías.</p>
+        <p>En nuestro spa, ofrecemos una amplia gama de tratamientos que van desde masajes terapéuticos hasta tratamientos faciales y corporales. Nuestro equipo de profesionales está dedicado a brindarte una experiencia única que revitalice tu cuerpo y mente.</p>
+        <p>Nos enorgullece usar solo productos naturales de la más alta calidad, garantizando que cada tratamiento sea no solo efectivo, sino también seguro para tu piel y tu salud.</p>
+        <p>Esperamos darte la bienvenida pronto y ayudarte a encontrar la paz y el bienestar que mereces.</p>
+        
+        <a class="print-button" onclick="window.print()">Imprimir esta página</a>
+    </div>
+
+</body>
+</html>
