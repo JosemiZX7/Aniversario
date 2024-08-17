@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://i.imgur.com/3X2UvtM.png'); /* Imagen de pergamino */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: flex-start;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .navbar a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 4px;
+            background-color: #f4d03f;
+        }
+
+        .navbar a:hover {
+            background-color: #d4ac0d;
+            color: white;
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            min-height: 300px;
+        }
+
+        .content textarea {
+            width: 100%;
+            height: 300px;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            background: none;
+            resize: none;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="fotos.html">Fotos</a>
+        <a href="presentacion.html">Presentación</a>
+    </div>
+
+    <div class="content">
+        <textarea placeholder="Escribe aquí tu texto..."></textarea>
+    </div>
+
+</body>
+</html>
