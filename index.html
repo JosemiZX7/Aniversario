@@ -45,15 +45,9 @@
             min-height: 300px;
         }
 
-        .content textarea {
-            width: 100%;
-            height: 300px;
-            border: none;
-            padding: 10px;
+        .content div {
             font-size: 16px;
-            background: none;
-            resize: none;
-            outline: none;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -65,7 +59,12 @@
     </div>
 
     <div class="content">
-        <textarea placeholder="Escribe aquí tu texto..."></textarea>
+        <div>
+            <!-- Texto editable solo desde el código -->
+            <p>Bienvenido a nuestra página principal. Aquí puedes encontrar información sobre nuestras diferentes secciones. Si deseas editar este texto, por favor, realiza los cambios directamente en el archivo <code>index.html</code> en el repositorio de GitHub.</p>
+            <p>Para obtener más detalles sobre nuestras fotos y textos, visita la sección de <a href="fotos.html">Fotos</a>.</p>
+            <p>Para conocer más sobre nuestro spa y su carta de presentación, ve a la sección de <a href="presentacion.html">Presentación</a>.</p>
+        </div>
     </div>
 
 </body>
