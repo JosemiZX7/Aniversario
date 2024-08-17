@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotos y Textos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: flex-start;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .navbar a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 4px;
+            background-color: #f4d03f;
+        }
+
+        .navbar a:hover {
+            background-color: #d4ac0d;
+            color: white;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .item {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .item img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .item p {
+            flex: 1;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html">Inicio</a>
+        <a href="presentacion.html">Presentación</a>
+    </div>
+
+    <div class="content">
+        <div class="item">
+            <img src="https://via.placeholder.com/200" alt="Foto 1">
+            <p>Texto descriptivo sobre la primera foto.</p>
+        </div>
+        <div class="item">
+            <img src="https://via.placeholder.com/200" alt="Foto 2">
+            <p>Texto descriptivo sobre la segunda foto.</p>
+        </div>
+        <!-- Puedes agregar más elementos similares -->
+    </div>
+
+</body>
+</html>
