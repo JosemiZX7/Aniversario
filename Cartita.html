@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Principal</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Gloock&display=swap');
-
         body {
-            font-family: 'Gloock', serif; /* Fuente elegante para el cuerpo del texto */
-            background-color: #ffffff; /* Fondo blanco */
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff; /* Fondo blanco para la página */
             margin: 0;
             padding: 0;
         }
@@ -39,45 +37,42 @@
         }
 
         .content {
-            background-image: url('https://cdn.pixabay.com/photo/2016/03/09/09/22/heart-1240770_1280.jpg'); /* Imagen de fondo de pergamino */
+            background-image: url('Imagenes/pergamino.png'); /* Imagen de pergamino antiguo */
             background-size: cover; /* Ajusta la imagen para que se muestre entera */
             background-repeat: no-repeat;
             background-position: center;
             width: 100vw; /* Ancho completo del viewport */
             height: 100vh; /* Altura completa del viewport */
-            padding: 40px; /* Aumenta el padding para dar más espacio al texto */
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 0 auto;
             display: flex; /* Flexbox para centrar el contenido */
-            align-items: flex-start; /* Centra verticalmente */
+            align-items: center; /* Centra verticalmente */
             justify-content: center; /* Centra horizontalmente */
-            min-height: 400px; /* Ajusta la altura mínima para mejorar la apariencia */
+            padding: 20px; /* Reduce el padding general */
+            box-sizing: border-box; /* Incluye padding y border en el ancho y alto del elemento */
         }
 
         .content div {
-            font-size: 18px;
-            line-height: 1.8;
-            background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semi-transparente para el texto */
-            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente para el texto */
             border-radius: 10px;
-            color: #f4f4f4; /* Texto en color claro para contraste */
-            text-align: justify;
-            margin-top: 30px;
+            padding: 40px; /* Aumenta el padding para dar más espacio al texto */
+            max-width: 800px; /* Ajusta el ancho máximo del contenedor */
+            text-align: left; /* Alinea el texto a la izquierda */
+            margin-top: 20px; /* Espacio superior para desplazar el texto hacia abajo */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra más suave para el contenedor */
         }
 
         .content h1 {
-            font-family: 'Dancing Script', cursive;
             font-size: 36px;
+            font-weight: bold;
             margin-bottom: 20px;
-            color: #ffde7d;
-            text-align: center;
+            font-family: 'Georgia', serif; /* Fuente serif para un aspecto más formal */
+            text-align: center; /* Centra el título */
         }
 
         .content p {
+            font-size: 18px;
+            line-height: 1.6;
             margin-bottom: 20px;
-            text-indent: 40px; /* Sangría para el primer párrafo */
+            text-indent: 20px; /* Sangría al inicio de cada párrafo para darle un toque de carta */
         }
 
         .print-button {
@@ -89,7 +84,7 @@
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 20px; /* Espacio antes del botón de impresión */
+            text-align: center;
         }
 
         .print-button:hover {
