@@ -3,93 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
+    <title>Feliz Aniversario</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #ffffff; /* Fondo blanco para la página */
+            background-color: #ffffff;
             margin: 0;
             padding: 0;
-        }
-
-        .navbar {
             display: flex;
-            justify-content: flex-start;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .navbar a {
-            margin-right: 10px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            padding: 8px 16px;
-            border-radius: 4px;
-            background-color: #f4d03f;
-        }
-
-        .navbar a:hover {
-            background-color: #d4ac0d;
-            color: white;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
         .content {
-            background-image: url('Imagenes/pergamino.png'); /* Imagen de pergamino antiguo */
-            background-size: cover; /* Ajusta la imagen para que se muestre entera */
+            background-image: url('Imagenes/pergamino.png');
+            background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
-            width: 100vw; /* Ancho completo del viewport */
-            height: 100vh; /* Altura completa del viewport */
-            padding: 40px; /* Aumenta el padding para dar más espacio al texto */
+            width: 90vw;
+            height: 90vh;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex; /* Flexbox para centrar el contenido */
-            align-items: center; /* Centra verticalmente */
-            justify-content: center; /* Centra horizontalmente */
-            min-height: 400px; /* Ajusta la altura mínima para mejorar la apariencia */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            color: #4a4a4a;
         }
 
-        .content div {
-            font-size: 16px;
-            line-height: 1.6;
-            background-color: rgba(255, 255, 255, 0); /* Fondo blanco semi-transparente para el texto */
-            padding: 20px;
+        .content h1 {
+            font-size: 36px;
+            color: #d4ac0d;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
             border-radius: 10px;
-            max-width: 100%; /* Ajusta el contenido para que no se salga del contenedor */
-            text-align: center; /* Centra el texto dentro del div */
-            margin-top: 30px;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .content a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 24px;
+            background-color: #f4d03f;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .content a:hover {
+            background-color: #d4ac0d;
+            color: white;
         }
     </style>
 </head>
 <body>
 
-    <div class="navbar">
+    <div class="content">
+        <h1>Feliz Segundo Aniversario</h1>
+        <p>Bienvenido a nuestra página especial de aniversario. Explora nuestras secciones para revivir recuerdos y descubrir sorpresas preparadas especialmente para ti.</p>
         <a href="Cartita.html">Cartita</a>
         <a href="Recuerdos.html">Recuerdos</a>
         <a href="Para Tu.html">Para Tu</a>
-    </div>
-
-    <div class="content">
-        <div>
-            <!-- Texto editable solo desde el código -->
-            <p>Bienvenido a nuestra página principal. Aquí puedes encontrar información sobre nuestras diferentes secciones. Si deseas editar este texto, por favor, realiza los cambios directamente en el archivo <code>index.html</code> en el repositorio de GitHub.</p>
-            <p>Para obtener más detalles sobre nuestros recuerdos, visita la sección de <a href="Recuerdos.html">Recuerdos</a>.</p>
-            <p>Para conocer más sobre nuestro spa y su carta de presentación, ve a la sección de <a href="Para Tu.html">Para Tu</a>.</p>
-            <p>Para conocer más sobre nuestro spa y su carta de presentación, ve a la sección de <a href="Para Tu.html">Para Tu</a>.</p>
-            <p>Para conocer más sobre nuestro spa y su carta de presentación, ve a la sección de <a href="Para Tu.html">Para Tu</a>.</p>
-            <p>Para conocer más sobre nuestro spa y su carta de presentación, ve a la sección de <a href="Para Tu.html">Para Tu</a>.</p>
-            <p>Para conocer más sobre nuestro spa y su carta de presentación, ve a la sección de <a href="Para Tu.html">Para Tu</a>.</p>
-            <p>Para conocer más sobre nuestro spa y su carta de presentación, ve a la sección de <a href="Para Tu.html">Para Tu</a>.</p>
-            <p>Para conocer más sobre nuestro spa y su carta de presentación, ve a la sección de <a href="Para Tu.html">Para Tu</a>.</p>
-            <p>Para conocer más sobre nuestro spa y su carta de presentación, ve a la sección de <a href="Para Tu.html">Para Tu</a>.</p>
-            <p>Para conocer más sobre nuestro spa y su carta de presentación, ve a la sección de <a href="Para Tu.html">Para Tu</a>.</p>
-            <p>Para conocer más sobre nuestro spa y su carta de presentación, ve a la sección de <a href="Para Tu.html">Para Tu</a>.</p>
-        </div>
     </div>
 
 </body>
