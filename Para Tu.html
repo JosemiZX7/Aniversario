@@ -9,6 +9,7 @@
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             padding: 20px;
+            margin: 0;
         }
 
         .navbar {
@@ -36,21 +37,28 @@
         }
 
         .content {
-            background-image: url('https://aladinia.freetls.fastly.net/media/catalog/product/cache/1/image/646x432/9df78eab33525d08d6e5fb8d27136e95/e/s/escapada-romantica-estepona-1_2.jpg'); /* Imagen de pergamino antiguo */
-            background-size: cover; /* Ajusta la imagen para que se muestre entera */
+            background-image: url('https://aladinia.freetls.fastly.net/media/catalog/product/cache/1/image/646x432/9df78eab33525d08d6e5fb8d27136e95/e/s/escapada-romantica-estepona-1_2.jpg'); 
+            background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
-            width: 100vw; /* Ancho completo del viewport */
-            height: 100vh; /* Altura completa del viewport */
-            padding: 40px; /* Aumenta el padding para dar más espacio al texto */
+            padding: 40px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 800px;
             margin: 0 auto;
-            display: flex; /* Flexbox para centrar el contenido */
-            align-items: center; /* Centra verticalmente */
-            justify-content: center; /* Centra horizontalmente */
-            min-height: 400px; /* Ajusta la altura mínima para mejorar la apariencia */
+            background-color: white; /* Agregué un fondo blanco para mejorar la legibilidad */
+            color: black; /* Color del texto */
+        }
+
+        .content h1, .content p {
+            margin: 0;
+            padding: 10px 20px;
+            text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+        }
+
+        .content h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
         }
 
         .content p {
