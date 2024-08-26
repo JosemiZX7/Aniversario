@@ -5,68 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Aniversario</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #ffffff;
             margin: 0;
             padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-family: 'Arial', sans-serif;
             height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://cdn.pixabay.com/photo/2016/03/09/09/22/heart-1240770_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
         }
 
         .content {
-            background-image: url('Imagenes/pergamino.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            width: 90vw;
-            height: 90vh;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
             text-align: center;
-            color: #4a4a4a;
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semi-transparente */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
         }
 
         .content h1 {
-            font-size: 36px;
-            color: #d4ac0d;
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
             margin-bottom: 20px;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 10px 20px;
-            border-radius: 10px;
         }
 
         .content p {
-            font-size: 18px;
-            margin-bottom: 20px;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 10px 20px;
-            border-radius: 10px;
-            color: white;
+            font-size: 20px;
+            margin-bottom: 40px;
         }
 
         .content a {
             display: inline-block;
             margin: 10px;
-            padding: 12px 24px;
-            background-color: #f4d03f;
-            color: #333;
+            padding: 12px 30px;
+            background-color: #ff6347;
+            color: white;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            border-radius: 30px;
+            font-size: 18px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
         .content a:hover {
-            background-color: #d4ac0d;
-            color: white;
+            background-color: #e5533d;
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -74,7 +62,7 @@
 
     <div class="content">
         <h1>Feliz Segundo Aniversario</h1>
-        <p>Bienvenido a nuestra página especial de aniversario. Explora nuestras secciones para revivir recuerdos y descubrir sorpresas preparadas especialmente para ti.</p>
+        <p>Celebrando nuestro amor y los recuerdos que hemos creado juntos. Explora las sorpresas que he preparado especialmente para ti.</p>
         <a href="Cartita.html">Cartita</a>
         <a href="Recuerdos.html">Recuerdos</a>
         <a href="Para Tu.html">Para Tu</a>
