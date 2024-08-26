@@ -44,25 +44,28 @@
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: rgba(0, 0, 0, 0.1); /* Fondo semi-transparente en negro */
             max-width: 800px;
             margin: 0 auto;
-           /* background-color: white; /* Agregué un fondo blanco para mejorar la legibilidad */
-            color: black; /* Color del texto */
+            color: white;
         }
 
-        .content h1, .content p {
+        .text-container {
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente en negro */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .text-container h1, .text-container p {
             margin: 0;
-            padding: 10px 20px;
-            text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+            text-align: left;
         }
 
-        .content h1 {
+        .text-container h1 {
             margin-bottom: 20px;
             font-size: 24px;
         }
 
-        .content p {
+        .text-container p {
             font-size: 18px;
             line-height: 1.6;
             margin-bottom: 20px;
@@ -93,11 +96,13 @@
     </div>
 
     <div class="content">
-        <h1>Feliz Segundo Aniversario Baby</h1>
-        <p>Bienvenido a nuestro spa, un lugar donde la tranquilidad y el bienestar son nuestra prioridad. Aquí encontrarás un ambiente sereno y relajante, diseñado para ayudarte a desconectar del estrés diario y recargar energías.</p>
-        <p>En nuestro spa, ofrecemos una amplia gama de tratamientos que van desde masajes terapéuticos hasta tratamientos faciales y corporales. Nuestro equipo de profesionales está dedicado a brindarte una experiencia única que revitalice tu cuerpo y mente.</p>
-        <p>Nos enorgullece usar solo productos naturales de la más alta calidad, garantizando que cada tratamiento sea no solo efectivo, sino también seguro para tu piel y tu salud.</p>
-        <p>Esperamos darte la bienvenida pronto y ayudarte a encontrar la paz y el bienestar que mereces.</p>
+        <div class="text-container">
+            <h1>Feliz Segundo Aniversario Baby</h1>
+            <p>Bienvenido a nuestro spa, un lugar donde la tranquilidad y el bienestar son nuestra prioridad. Aquí encontrarás un ambiente sereno y relajante, diseñado para ayudarte a desconectar del estrés diario y recargar energías.</p>
+            <p>En nuestro spa, ofrecemos una amplia gama de tratamientos que van desde masajes terapéuticos hasta tratamientos faciales y corporales. Nuestro equipo de profesionales está dedicado a brindarte una experiencia única que revitalice tu cuerpo y mente.</p>
+            <p>Nos enorgullece usar solo productos naturales de la más alta calidad, garantizando que cada tratamiento sea no solo efectivo, sino también seguro para tu piel y tu salud.</p>
+            <p>Esperamos darte la bienvenida pronto y ayudarte a encontrar la paz y el bienestar que mereces.</p>
+        </div>
         
         <a class="print-button" onclick="window.print()">Imprimir</a>
     </div>
