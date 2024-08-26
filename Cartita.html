@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Principal</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Gloock&display=swap');
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #ffffff; /* Fondo blanco para la página */
+            font-family: 'Gloock', serif; /* Fuente elegante para el cuerpo del texto */
+            background-color: #ffffff; /* Fondo blanco */
             margin: 0;
             padding: 0;
         }
@@ -37,7 +39,7 @@
         }
 
         .content {
-            background-image: url('Imagenes/pergamino.png'); /* Imagen de pergamino antiguo */
+            background-image: url('https://cdn.pixabay.com/photo/2016/03/09/09/22/heart-1240770_1280.jpg'); /* Imagen de fondo de pergamino */
             background-size: cover; /* Ajusta la imagen para que se muestre entera */
             background-repeat: no-repeat;
             background-position: center;
@@ -49,22 +51,36 @@
             max-width: 800px;
             margin: 0 auto;
             display: flex; /* Flexbox para centrar el contenido */
-            align-items: center; /* Centra verticalmente */
+            align-items: flex-start; /* Centra verticalmente */
             justify-content: center; /* Centra horizontalmente */
             min-height: 400px; /* Ajusta la altura mínima para mejorar la apariencia */
         }
 
         .content div {
-            font-size: 16px;
-            line-height: 1.6;
-            background-color: rgba(255, 255, 255, 0); /* Fondo blanco semi-transparente para el texto */
-            padding: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semi-transparente para el texto */
+            padding: 40px;
             border-radius: 10px;
-            max-width: 100%; /* Ajusta el contenido para que no se salga del contenedor */
-            text-align: justified; /* Alinea el texto dentro del div */
+            color: #f4f4f4; /* Texto en color claro para contraste */
+            text-align: justify;
             margin-top: 30px;
         }
-         .print-button {
+
+        .content h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #ffde7d;
+            text-align: center;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+            text-indent: 40px; /* Sangría para el primer párrafo */
+        }
+
+        .print-button {
             display: inline-block;
             padding: 10px 20px;
             background-color: #f4d03f;
@@ -73,6 +89,7 @@
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
+            margin-top: 20px; /* Espacio antes del botón de impresión */
         }
 
         .print-button:hover {
