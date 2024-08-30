@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fotos y Textos</title>
+    <title>Fotos y Videos</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             padding: 20px;
+            margin: 0;
+            overflow-x: hidden;
         }
 
         .navbar {
@@ -39,6 +41,8 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+	    margin-left: 10%;
+	    margin-right: 10%;
         }
 
         .item {
@@ -52,18 +56,107 @@
         }
 
         .item img {
-            width: 200px;
+            width: 120px;
             height: auto;
             border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .item img:hover {
+            transform: scale(1.05);
         }
 
         .item p {
+	    margin-left: 50px;
+	    margin-right: 5%;
             flex: 1;
             font-size: 18px;
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .modal img, .modal video {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+	/* Estilos para la animación de carga */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .loading-text {
+            display: inline-block;
+            font-size: 32px;
+        }
+
+	.loading-text::after {
+	    content: '';
+	    animation: dots 2s infinite;
+	}
+        @keyframes dots {
+	    0% { content: ''; }
+    	    12.5% { content: ' 💭'; }
+   	    25% { content: ' 💭 💭'; }
+  	    37.5% { content: ' 💭 💭 💭'; }
+	    50% { content: ' 💭 💭 💭 💭'; }
+	    62.5% { content: ' 💭 💭 💭'; }
+	    75% { content: ' 💭 💭'; }
+	    87.5% { content: ' 💭'; }
+	    100% { content: ''; }
+        }
+
     </style>
 </head>
 <body>
+
+    <!-- Pantalla de carga -->
+    <div id="loading-screen">
+        <span class="loading-text">CARGANDO MEMORIA (LA EDAD ES MU MALA) 🤔</span>
+    </div>
+
+    <!-- Contenido de la página -->
+    <div id="content" style="display: none;">
 
     <div class="navbar">
         <a href="index.html">Inicio</a>
@@ -71,15 +164,191 @@
 
     <div class="content">
         <div class="item">
-            <img src="https://via.placeholder.com/200" alt="Foto 1">
-            <p>Texto descriptivo sobre la primera foto.</p>
+            <img src="Imagenes/20220905-WA0068.jpg" alt="Foto 1" onclick="openModal(this)">
+            <p>La primera noche de nuestras Medievales, que siempre quedará para el recuerdo...puto antifaz.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20220905-WA0035.jpg" alt="Foto 2" onclick="openModal(this)">
+            <p>La primera foto de aquella noche inolvidable, donde todo comenzo...</p>
         </div>
         <div class="item">
-            <img src="https://via.placeholder.com/200" alt="Foto 2">
-            <p>Texto descriptivo sobre la segunda foto.</p>
+            <img src="Imagenes/20220916_195059.jpg" style="height: auto; width: 72.5px;" alt="Foto 3" onclick="openModal(this)">
+	    <img src="Imagenes/20220916_202408.jpg" alt="Foto 4" onclick="openModal(this)">
+            <p>Nuestra primera "cita" o mejor dicho nuestro primer paseo por el rio, y sobre todo mi foto Favorita.
+	    <br><br>Nunca olvidare lo hermosa y alegre que te veias en ese momento.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20221030-WA0038.jpg" style="height: auto; width: 100px;" alt="Foto 5" onclick="openModal(this)">
+            <p>Nuestro primer Festival de Halloween, fue la primera vez que fui a un festival así y me alegro de haber sido contigo &#128523;</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20221119-WA0017.jpg" alt="Foto 6" onclick="openModal(this)">
+            <p>Nuestra primera batalla, aun recuerdo el balazo que me diste a traición!! &#129300;</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20221211-WA0007.jpg" alt="Foto 7" onclick="openModal(this)">
+            <p>La primera vez que te vi cumplir años, aun recuerdo las lagrimas que soltaste cuando los chicos te dieron su regalo &#128522;, quiero que conserves esa ilusión y alegría.</p>
+        </div>
+	<div class="item">
+            <video src="Imagenes/20221216_144921_1.mp4" controls width="200"></video>
+	    <video src="Imagenes/20221216_145834.mp4" controls width="200"></video>
+            <p>Aunque pase el tiempo siempre intentare darte los regalos y sorpresas que te mereces mi Reina &#128156;. 
+	    <br><br>Me encanto la reacción que tuviste cuando te di la sorpresa por tu cumple &#128525;.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20221216_150015.jpg" alt="Foto 8" onclick="openModal(this)">
+	    <img src="Imagenes/20221216-WA0002.jpeg" alt="Foto 9" onclick="openModal(this)">
+	    <img src="Imagenes/20221216-WA0027.jpeg" alt="Foto 10" onclick="openModal(this)">
+            <p>No fuiste la unica en recibir un regalo aquel día, las lagrimas de felicidad y la sonrisa que me diste fueron el mejor regalo que pudiera haber deseado &#128522;.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20221217_211508.jpg" alt="Foto 11" onclick="openModal(this)">
+            <p>Aquel día tuvimos una cita por el centro para ver las luces, recuerdo que subi a la Seta por primera vez contigo y estuviste jugando con las luces haciendolas iluminar, estabas muy mona en aquel momento  &#128584;. 
+	    <br><br> Aquel día estabas radiante e incluso brillabas más que aquellas luces &#129321;.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20230101-WA0033.jpg" alt="Foto 12" onclick="openModal(this)">
+            <p>Llego Fin de año, un año que finalice junto con el amor de mi vida, y un comienzo de una nueva vida junto a ti &#128153;.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20230214_195749.jpg" alt="Foto 13" onclick="openModal(this)">
+            <p>Nuestro primer San Valentín, aquí fue el comienzo de la historia de Boo junto a ti.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20230314_182735.jpg" alt="Foto 14" onclick="openModal(this)">
+	    <img src="Imagenes/20230314-WA0099.jpg" style="height: 160px; width: auto;" alt="Foto 15" onclick="openModal(this)">
+            <p>Nuestra primera sesión e intento de fotos Tumble, salio mejor de lo que esperaba &#128514;.
+	    <br><br>Tengo a una buena fotógrafa &#128521;.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20230326_172925.jpg" style="height: 150px; width: auto;" alt="Foto 15" onclick="openModal(this)">
+	    <img src="Imagenes/20230326_160150.jpg" style="height: 150px; width: auto;" alt="Foto 16" onclick="openModal(this)">
+            <p>Quién diría que acabariamos en un paseo en barco y que podría ver semejante belleza??</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20230428-WA0000.jpg" style="height: 150px; width: auto;" alt="Foto 17" onclick="openModal(this)">
+	    <img src="Imagenes/20230428-WA0001.jpg" style="height: 150px; width: auto;" alt="Foto 18" onclick="openModal(this)">
+            <p>Nuestra primera Feria y la Flamenca mas hermosa del lugar &#128536;</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20230611-WA0011.jpg" alt="Foto 19" onclick="openModal(this)">
+	    <img src="Imagenes/20230611-WA0006.jpg" style="height: 160px; width: auto;" alt="Foto 20" onclick="openModal(this)">
+            <p>Aquel día fue mi primo, pero algún día serás tu la que vaya caminando al Altar vestida de Blaco &#128147;.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20230809-WA0056.jpg" style="height: 180px; width: auto;" alt="Foto 21" onclick="openModal(this)">
+            <p>Aquellas vacaciones fueron las mejores que pase en mucho tiempo, os doy las gracias a ti y a tus padres por llevarme y poder ver aquello junto a ti  &#128523;.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20230903-WA0008.jpg" alt="Foto 22" onclick="openModal(this)">
+            <p>Por fin llego nuestro Aniversario, aunque hubo algunos problemas aquel finde, hice todo lo que pude para que fuera inolvidable, pero viendo que no era capaz, te acercaste a mi y me diste los animos suficientes para conseguir pasarnoslo bien juntos &#128147;.</p>
+        </div>
+ 	<div class="item">
+            <video src="Imagenes/Te Quiero 3000.mp4" controls width="200"></video>
+            <p>Cuando volvimos de las Medievales te quize dar la mayor sorpresa que te podías esperar, para ello te llevo al banco donde nos vimos antes de pedirte salir... a nuestro banco &#128522;
+	    <br><br>Como regalo te hice lo mejor que se me daba en cuanto a manualidades, estar detrás de una pantlla editando &#128517;, le dedique mucho tiempo además de soltar lagrimas cada vez que editaba porque me podía el amor y la alegría que me entraba en el cuerpo solo de pensarlo &#128546;.
+	    <br><br>No sabría si te gustaría tanto como a mí, hasta que ví que empezabas a llorar namas ver los primeros minutos del video &#128156;.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20231001-WA0024.jpg" alt="Foto 23" onclick="openModal(this)">
+            <p>Este fue un dia algo asalvajado supongo &#128514;, eso si quede con una carita muy suave, cuando quieras lo repetimos  &#128540; RAWW.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20231110-WA0008.jpg" style="height: 180px; width: auto;" alt="Foto 24" onclick="openModal(this)">
+            <p>Mi pequeña pera gran peluquera &#128518;, recuerdo lo ilusionada que estabas cuando empezaste las prácticas y cuando salias llorando por la impotencia de los perros cuando te mordían o ibais con prisa, extoy muy orgulloso de que te hallas sacado tu titulo &#128522;.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20231210-WA0033.jpg" alt="Foto 25" onclick="openModal(this)">
+            <p>Aquí simplemente me gustó la foto, no puedo ponerte un textito con todo &#128517; &#128514;</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20231210-WA0034.jpg" alt="Foto 26" onclick="openModal(this)">
+            <p>Me hiciste ver la saga completa para esatr al día, pero simplemente por esa carita de ilusión que me poías merecía la pena verla toda la saga.
+	    <br><br>Pd: Al final me enganche  &#128518;</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20231216-WA0036.jpg" style="height: 180px; width: auto;" alt="Foto 27" onclick="openModal(this)">
+            <p>Nuestra primera vez en OCCO, volvería a repetir esa noche contigo sin pensarmelo.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20240101-WA0018.jpg" alt="Foto 28" onclick="openModal(this)">
+ 	    <img src="Imagenes/20240101-WA0020.jpg" alt="Foto 29" onclick="openModal(this)">
+            <p>¿Sabes cual fue mi deseo de fin de año?, poder permanecer un año más junto a ti, ese es y será siempre mi deseo cada Fin de año.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20240212-WA0006.jpg" alt="Foto 30" onclick="openModal(this)">
+            <p>Nos trajisteis a tu padre y a mi por sorpresa pera celebrar San Valentín, me encantó el espectaculo de las comidas y sé muy bien que me pedirás ir de nuevo cuando veas esto &#128540;.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20240216-WA0001.jpg" alt="Foto 31" onclick="openModal(this)">
+            <p>Feliz segundo San Valentín princesa!!, me costo organizarte esta sorpresa ya que era imposible realizarlo en tu casa a escondidas de tí.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20240419-WA0057.jpg" alt="Foto 32" onclick="openModal(this)">
+	    <img src="Imagenes/20240417-WA0041.jpg" alt="Foto 33" onclick="openModal(this)">
+            <img src="Imagenes/20240420-WA0253.jpg" alt="Foto 34" onclick="openModal(this)">
+	    <img src="Imagenes/20240420-WA0030.jpg" alt="Foto 35" onclick="openModal(this)">
+	    <p>Nuestra segunda feria y la primera vez que fui en traje a ella, sin duda las Ferias contigo son las mejores que he tenido &#128522;.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20240801-WA0021.jpeg" alt="Foto 36" onclick="openModal(this)">
+            <p>Dia de Guadarpark, me lo pase muy bien &#128518;, menos en el jacuzzi que más que relajar me estresaba tanta burbuja  &#128514;.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/20240805-WA0028.jpg" alt="Foto 37" onclick="openModal(this)">
+            <img src="Imagenes/20240808-WA0111.jpg" style="height: 160px; width: auto;" alt="Foto 38" onclick="openModal(this)">
+            <p>Nuestras segundas vacaciones y en Galicia!!, me pase las vacaciones como un niño chico, aunque no voi a echar de menos ni el agua fría de allí, ni las curvas, ni el hielo &#128514;&#128514;.</p>
+        </div>
+	<div class="item">
+            <img src="Imagenes/.jpg" alt="PROXIMAMENTE...." style="height: auto; width: auto;" onclick="openModal(this)">
+            <p>Te dejaré este hueco para que podamos seguir completando este album Digital</p>
         </div>
         <!-- Puedes agregar más elementos similares -->
     </div>
+
+    <div id="modal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img id="modalImage" src="" alt="">
+        <video id="modalVideo" controls></video>
+    </div>
+
+    <script>
+
+	  // Tiempo de duración de la pantalla de carga (en segundos)
+         const loadingTime = 10;
+
+         // Función para ocultar la pantalla de carga y mostrar el contenido
+         function hideLoadingScreen() {
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+         }
+
+         // Ocultar la pantalla de carga después del tiempo especificado
+         setTimeout(hideLoadingScreen, loadingTime * 1000);
+
+         function openModal(element) {
+            if (element.tagName === 'IMG') {
+                const modal = document.getElementById('modal');
+                const modalImage = document.getElementById('modalImage');
+                const modalVideo = document.getElementById('modalVideo');
+
+                modalImage.src = element.src;
+                modalImage.style.display = 'block';
+                modalVideo.style.display = 'none';
+
+                modal.classList.add('show');
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('show');
+            const modalImage = document.getElementById('modalImage');
+            const modalVideo = document.getElementById('modalVideo');
+            modalImage.src = '';
+            modalVideo.src = '';
+        }
+    </script>
 
 </body>
 </html>

@@ -37,14 +37,14 @@
         }
 
         .content {
-            background-image: url('https://aladinia.freetls.fastly.net/media/catalog/product/cache/1/image/646x432/9df78eab33525d08d6e5fb8d27136e95/e/s/escapada-romantica-estepona-1_2.jpg'); 
-            background-size: cover;
+            background-image: url('Imagenes/Portada SPA.jpg'); 
+            background-size: 100% 100%;
             background-repeat: no-repeat;
             background-position: center;
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             color: white;
         }
@@ -55,14 +55,20 @@
             border-radius: 10px;
         }
 
-        .text-container h1, .text-container p {
+        .text-container h1, .text-container h2, .text-container p {
             margin: 0;
             text-align: left;
         }
 
         .text-container h1 {
             margin-bottom: 20px;
-            font-size: 24px;
+            font-size: 50px;
+        }
+
+        .text-container h2 {
+            margin-bottom: 20px;
+            font-size: 21px;
+            text-align: center;
         }
 
         .text-container p {
@@ -85,25 +91,207 @@
         .print-button:hover {
             background-color: #d4ac0d;
         }
+
+        .button-container {
+            text-align: center; /* Centra el contenido del contenedor */
+            margin-top: 20px;
+        }
+
+        /* Estilos para la imagen */
+        .image-container img {
+            width: 300px;
+            height: 200px;
+            transition: transform 0.3s ease, top 0.3s ease, left 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Estilo para la imagen ampliada */
+        .image-container img.expanded {
+            position: fixed;
+            top: 50%;
+            left: 40%;
+            transform: translate(-100%, -50%) scale(3);
+            z-index: 1000;
+        }
+
+        /* Estilo para oscurecer el fondo cuando la imagen está ampliada */
+        .image-container.expanded::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Oculta la imagen para la visualización normal */
+        .print-image {
+            display: none;
+        }
+
+        /* Estilos para la animación de carga */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .loading-text {
+            display: inline-block;
+            font-size: 32px;
+        }
+
+	.loading-text::after {
+	    content: '';
+	    animation: dots 2s infinite;
+	}
+        @keyframes dots {
+	    0% { content: ''; }
+    	    12.5% { content: ' ♥'; }
+   	    25% { content: ' ♥ ♥'; }
+  	    37.5% { content: ' ♥ ♥ ♥'; }
+	    50% { content: ' ♥ ♥ ♥ ♥'; }
+	    62.5% { content: ' ♥ ♥ ♥'; }
+	    75% { content: ' ♥ ♥'; }
+	    87.5% { content: ' ♥'; }
+	    100% { content: ''; }
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            body * {
+                visibility: hidden; /* Oculta todo el contenido de la página */
+            }
+
+            .print-image, .print-image * {
+                visibility: visible;
+                display: block; /* Muestra la imagen solo al imprimir */
+            }
+
+            .print-image {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: auto;
+                margin: 0;
+            }
+
+            .content {
+                display: none; /* Oculta el contenido original */
+            }
+
+            .print-button {
+                display: none; /* Oculta el botón durante la impresión */
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="navbar">
-        <a href="index.html">Inicio</a>
+    <!-- Pantalla de carga -->
+    <div id="loading-screen">
+        <span class="loading-text">CARGANDO REGALO</span>
     </div>
 
-    <div class="content">
-        <div class="text-container">
-            <h1>Feliz Segundo Aniversario Baby</h1>
-            <p>Bienvenido a nuestro spa, un lugar donde la tranquilidad y el bienestar son nuestra prioridad. Aquí encontrarás un ambiente sereno y relajante, diseñado para ayudarte a desconectar del estrés diario y recargar energías.</p>
-            <p>En nuestro spa, ofrecemos una amplia gama de tratamientos que van desde masajes terapéuticos hasta tratamientos faciales y corporales. Nuestro equipo de profesionales está dedicado a brindarte una experiencia única que revitalice tu cuerpo y mente.</p>
-            <p>Nos enorgullece usar solo productos naturales de la más alta calidad, garantizando que cada tratamiento sea no solo efectivo, sino también seguro para tu piel y tu salud.</p>
-            <p>Esperamos darte la bienvenida pronto y ayudarte a encontrar la paz y el bienestar que mereces.</p>
+    <!-- Contenido de la página -->
+    <div id="content" style="display: none;">
+    
+        <div class="navbar">
+            <a href="index.html">Inicio</a>
         </div>
+
+        <div class="content">
+            <div class="text-container">
+                <h1 style="text-align: center;">Feliz Segundo Aniversario Baby</h1>
+                <p>Si queréis vivir una <b>Escapada Romántica en Estepona</b>, Málaga, Aladinia os ofrece un maravilloso plan. Una escapada en el <b>Hotel H10 Estepona Palace 4*</b>.</p>
+                <p>Os alojaréis en el Hotel H10 Estepona Palace 4*, el único de categoría superior situado en Estepona, en <b>primera línea de la playa</b> y a tan solo 1500 metros del Puerto Deportivo, con una gran variedad de servicios de restauración y ocio. Disfrutaréis de una experiencia única en un entorno tranquilo y natural, con impresionantes vistas al mediterráneo, Gibraltar y la costa africana.</p>
+                <p>El hotel cuenta con una elaborada gastronomía con la que podréis deleitar vuestro paladar, y un lujoso spa con un completo <b>circuito hidrotermal</b> en el que encontraréis una zona de aguas termales, piscina dinámica, templo de duchas, poza de agua fría, jacuzzi, sauna y baño de vapor donde os podréis relajar, olvidaros de todos los problemas y pasar un momento solo para vosotros.</p>
+                <p>Perdeos en este excelente hotel, no os lo penséis más y disfrutad de un fin de semana romántico.</p>
+
+                <h2>Incluye:</h2>
+                <p style="text-align: center;">Alojamiento en habitación doble estándar<br>
+                    <div style="text-align: center;" class="image-container">
+                        <img src="Imagenes/Habitaciones SPA.jpg" alt="Foto 1" onclick="toggleImage(this)">
+                    </div>
+                </p>
         
-        <a class="print-button" onclick="window.print()">Imprimir</a>
+                <p style="text-align: center;">Circuito Spa para dos (1 hora y 30 min)<br>
+                    <div style="text-align: center;" class="image-container">
+                        <img src="Imagenes/Circuito de SPA.jpg" alt="Foto 3" onclick="toggleImage(this)">
+                    </div>
+                </p>
+
+                <p style="text-align: center;">Comida o Cena para dos + Desayuno buffet para dos<br>
+                    <div style="text-align: center;" class="image-container">
+                        <img src="Imagenes/Buffet SPA.jpg" alt="Foto 4" onclick="toggleImage(this)">
+                    </div>
+                </p>
+            </div>
+            
+            <!-- Contenedor para centrar el botón -->
+            <div class="button-container">
+                <a class="print-button" onclick="window.print()">Imprimir</a>
+            </div>
+        </div>
+
+        <!-- Imagen que solo se verá al imprimir -->
+        <div class="print-image">
+            <img src="Imagenes/Entrada.jpg" alt="Imagen a imprimir" style="width: 100%; height: auto;">
+            <p style="font-size: 50px; text-align: center; margin-top: 100px;">Espero que te guste tu regalo &#x1F498</p>
+        </div>
     </div>
+
+    <script>
+        // Tiempo de duración de la pantalla de carga (en segundos)
+        const loadingTime = 5;
+
+        // Función para ocultar la pantalla de carga y mostrar el contenido
+        function hideLoadingScreen() {
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+
+        // Ocultar la pantalla de carga después del tiempo especificado
+        setTimeout(hideLoadingScreen, loadingTime * 1000);
+
+        function printContent() {
+            window.print();
+        }
+
+        // Función para ampliar o reducir la imagen y oscurecer el fondo
+        function toggleImage(img) {
+            const container = img.parentNode;
+            img.classList.toggle('expanded');
+            container.classList.toggle('expanded');
+
+            // Cambiar el origen de la transformación para que la animación de reducción vaya de derecha a izquierda
+            if (img.classList.contains('expanded')) {
+                img.style.transformOrigin = "left center";
+            } else {
+                img.style.transformOrigin = "left center";
+            }
+        }
+    </script>
 
 </body>
 </html>

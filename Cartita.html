@@ -54,19 +54,20 @@
 
         .content h1 {
             font-family: 'Lobster', cursive;
-            font-size: 36px;
+            font-size: 50px;
             color: #4a4a4a;
-            margin-top: 300px;
+            margin-top: 320px;
             margin-bottom: 20px;
             text-align: center;
             line-height: 1.2;
+ 	    word-spacing: 20px;
         }
 
         .content p {
             font-family: 'Playfair Display', serif;
-            font-size: 18px;
+            font-size: 16px;
             line-height: 1.8;
-            color: #333;
+            color: #111;
             margin-left: 30px;
             margin-right: 30px;
             margin-bottom: 20px;
@@ -84,31 +85,133 @@
             cursor: pointer;
             text-align: center;
             margin-top: 20px;
+
         }
 
         .print-button:hover {
             background-color: #d4ac0d;
         }
+
+ 	.button-container {
+            text-align: center; /* Centra el contenido del contenedor */
+            margin-top: 20px;
+        }
+
+	/* Estilos para la animación de carga */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .loading-text {
+            display: inline-block;
+            font-size: 32px;
+        }
+
+   	.loading-text::after {
+	    content: '';
+	    animation: dots 2s infinite;
+	}
+        @keyframes dots {
+	    0% { content: ''; }
+    	    12.5% { content: ' ✉'; }
+   	    25% { content: ' ✉ ✉'; }
+  	    37.5% { content: ' ✉ ✉ ✉'; }
+	    50% { content: ' ✉ ✉ ✉ ✉'; }
+	    62.5% { content: ' ✉ ✉ ✉'; }
+	    75% { content: ' ✉ ✉'; }
+	    87.5% { content: ' ✉'; }
+	    100% { content: ''; }
+        }
+
+	@media print {
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden; /* Oculta el desbordamiento para que solo se vea el contenido */
+            }
+
+            body * {
+                visibility: hidden; /* Oculta todo el contenido de la página */
+            }
+
+            .content, .content * {
+                visibility: visible; /* Hace visible solo el contenido del div .content */
+            }
+
+	    .content {
+	    	position: absolute;
+                left: 0;
+                top: 0;
+                width: 1000vw; 
+                height: 94vh;
+                margin: 0;
+	     }
+
+            .print-button {
+                display: none; /* Oculta el botón durante la impresión */
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Pantalla de carga -->
+    <div id="loading-screen">
+        <span class="loading-text">CARGANDO LA CARTITA QUE TANTO QUERIAS 🚶‍♂️</span>
+    </div>
+
+    <!-- Contenido de la página -->
+    <div id="content" style="display: none;">
 
     <div class="navbar">
         <a href="index.html">Inicio</a>
     </div>
 
     <div class="content">
-        <h1>FELIZ ANIVERSARIO BABY</h1>
+        <h1>FELIZ SEGUNDO ANIVERSARIO BABY</h1>
         <p>Ya han pasado 2 años desde que nos conocimos y empezamos esta relación que una vez nos imaginamos, una relación que yo en algún momento pensé que nunca encontraría, una relación basada en amor, respeto, confianza, diversión y un toque de locura, una relación de la que muchos envidian, esa es la relación que he conseguido contigo, una en la que a pleno pulmón puedo gritar a los cuatro vientos sin miramiento alguno y decir, ¡¡ESTOY AGUSTOOO!! Para mí estas palabras significan todo aquello que hemos conseguido durante estos 2 años.</p>
         <p>No puedo expresarte toda mi gratitud, ni nunca podré darte todo el amor que te mereces, ni tampoco asegurarte que el día del mañana me convertiré en el hombre que te mereces, pero lo que sí puedo prometerte, es que tanto en estos dos últimos años como en los que me quedan junto a ti, pienso seguir trabajando y mejorando para poder darte todo aquello que anhelas y deseas, pienso seguir esforzándome para darte todo el amor y cariño que te mereces.</p>
         <p>Para mí eres la gasolina que pone en marcha mi motor, eres aquella que me da ánimos para levantarme, la única que pone patas arriba mi mundo interior, eres y siempre serás la única que con los ojos cerrados elegiría para ser mi copiloto en esta carrera contra la vida. Nunca podré expresarte al completo lo que siento porque me falta tiempo en la vida para poder contártelo, por eso siempre te diré "Until death and beyond", hasta la muerte y más allá, aunque para algunos suene triste, para mí esta frase significa lo siguiente:</p>
-        <p>"Después de la vida iré a buscarte, seguiré contándote todo aquello que me falta para poder expresar todo lo que siento, y así poder darte mi eterna gratitud; Porque para mí tú significas más que la vida misma y me falta tiempo para poder contártelo todo."</p>
+        <p style="font-family:'Arial', sans-serif; margin-top: -7px;"><i>"Después de la vida iré a buscarte, seguiré contándote todo aquello que me falta para poder expresar todo lo que siento, y así poder darte mi eterna gratitud; Porque para mí tú significas más que la vida misma y me falta tiempo para poder contártelo todo."</i></p>
         <p>Mi reina, dos años desde que todo comenzó en aquellas Medievales, dos años desde que te pedí oficialmente que recuperaras y cuidaras los cachitos de corazón roto que me quedaban, los cuales conseguiste juntar y hacerlo crecer, no puedo pedir más de lo que tú misma conseguiste.</p>
         <p>Son dos años de los cuales miro atrás y me doy cuenta de que el tiempo pasa demasiado rápido, aún no puedo creer que de todas las aventuras y momentos que hemos pasado juntos suman ya los dos años que llevamos, es una locura que yo mismo no consigo creer que hayas aguantado junto a mí, te lo volveré a repetir tantas veces como haga falta, nunca tendré suficiente tiempo en esta vida como para agradecerte todo lo que has hecho por mí.</p>
         <p>Te Quiero 3000 mi Vida.</p>
 
-        <a class="print-button" onclick="window.print()">Imprimir</a>
+	<!-- Contenedor para centrar el botón -->
+        <div class="button-container">
+        	<a class="print-button" onclick="window.print()">Imprimir</a>
+	</div>
     </div>
+	
+    <script>
+	 // Tiempo de duración de la pantalla de carga (en segundos)
+        const loadingTime = 5;
 
+        // Función para ocultar la pantalla de carga y mostrar el contenido
+        function hideLoadingScreen() {
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+
+        // Ocultar la pantalla de carga después del tiempo especificado
+        setTimeout(hideLoadingScreen, loadingTime * 1000);
+
+        function printContent() {
+            window.print();
+        }
+    </script>
 </body>
 </html>
