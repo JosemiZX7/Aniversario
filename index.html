@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script src="https://cdn.auth0.com/js/auth0/9.18/auth0.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Aniversario</title>
@@ -81,7 +82,59 @@
     </style>
 </head>
 <body>
+    <script>
+    // Configura Auth0
+    const auth0 = new Auth0({
+        domain: 'dev-ozc6do24dss5u110.us.auth0.com',
+        clientID: 'RBek1Phw4xNjnEbpmEElzPoucsWiZBJ0',
+        redirectUri: window.location.href,
+        responseType: 'token id_token',
+        scope: 'openid profile email'
+    });
 
+    // Función para iniciar sesión
+    function login() {
+        auth0.authorize();
+    }
+
+    // Función para manejar la respuesta de autenticación
+    function handleAuthentication() {
+        auth0.parseHash((err, authResult) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+
+            if (authResult && authResult.accessToken && authResult.idToken) {
+                localStorage.setItem('access_token', authResult.accessToken);
+                localStorage.setItem('id_token', authResult.idToken);
+                window.location.reload(); // Recarga la página para mostrar el contenido
+            }
+        });
+    }
+
+    // Verifica si el usuario está autenticado al cargar la página
+    window.onload = function() {
+        handleAuthentication();
+
+        if (!localStorage.getItem('access_token')) {
+            document.body.innerHTML = ''; // Limpia el contenido
+            const loginButton = document.createElement('button');
+            loginButton.innerText = 'Iniciar Sesión';
+            loginButton.onclick = login;
+            document.body.appendChild(loginButton); // Muestra botón de inicio de sesión
+        } else {
+            // Aquí puedes mostrar el contenido de la página
+            const contentDiv = document.createElement('div');
+            contentDiv.innerHTML = `
+                <h1>Feliz Segundo Aniversario</h1>
+                <p>Contenido protegido que solo los usuarios autenticados pueden ver.</p>
+            `;
+            document.body.appendChild(contentDiv);
+        }
+    };
+</script>
+    
     <div class="content">
         <h1>Feliz Segundo Aniversario</h1>
         <p>Celebrando nuestro amor y los recuerdos que hemos ido creando juntos, he diseñado esta página especialmente para ti</p>
