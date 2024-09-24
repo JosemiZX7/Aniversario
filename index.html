@@ -4,14 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Aniversario</title>
-    <link rel="stylesheet" href="style.css">
     <style>
-        /* Estilos previos se mantienen igual... */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://cdn.pixabay.com/photo/2016/03/09/09/22/heart-1240770_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+        }
+
+        .content {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semi-transparente */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .content h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .content a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 30px;
+            background-color: #ff6347;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 18px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .content a:hover {
+            background-color: #e5533d;
+            transform: scale(1.1);
+        }
+
+        /* Estilo para el botón de control de audio */
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .audio-control:hover {
+            background-color: #e5533d;
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
 
-    <div class="content" id="content" style="display:none;"> <!-- Contenido oculto por defecto -->
+    <div class="content">
         <h1>Feliz Segundo Aniversario</h1>
         <p>Celebrando nuestro amor y los recuerdos que hemos ido creando juntos, he diseñado esta página especialmente para ti</p>
         <p>Espero que te gusten las sorpresas que te he preparado para este día tan especial.</p>
@@ -20,63 +91,16 @@
         <a href="Para Tu.html">Para Tu</a>
     </div>
 
-    <div class="login-container" id="login-container">
-        <h2>Iniciar Sesión</h2>
-        <input type="email" id="email" placeholder="Correo electrónico" required>
-        <input type="password" id="password" placeholder="Contraseña" required>
-        <button id="login-button">Iniciar Sesión</button>
-        <p id="error-message" style="color: red;"></p>
-    </div>
-
+    <!-- Reproductor de audio invisible -->
     <audio id="background-music" loop>
         <source src="Audio/Si Me Lo Pides.mp3" type="audio/mpeg">
         Tu navegador no soporta la reproducción de audio.
     </audio>
 
+    <!-- Botón para controlar el audio -->
     <button class="audio-control" id="audio-toggle">ON</button>
 
-    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19/auth0-spa-js.production.js"></script>
     <script>
-        const domain = "dev-ozc6do24dss5u110.us.auth0.com"; // Asegúrate de que este sea el correcto
-        const clientId = "dKNoh2Bwn9zgOvFr1XIlI3JjSCJJ3pmJ"; // Asegúrate de que este sea el correcto
-
-        async function initAuth0() {
-            const auth0 = await createAuth0Client({
-                domain: domain,
-                client_id: clientId,
-            });
-
-            const isAuthenticated = await auth0.isAuthenticated();
-
-            if (!isAuthenticated) {
-                document.getElementById('login-container').style.display = 'flex';
-                document.getElementById('content').style.display = 'none';
-            } else {
-                const user = await auth0.getUser();
-                const allowedEmails = ["noeliacn1512@gmail.com", "jm.josemi38@gmail.com"];
-                if (allowedEmails.includes(user.email)) {
-                    document.getElementById('content').style.display = 'block';
-                    document.getElementById('login-container').style.display = 'none'; // Oculta el formulario de inicio de sesión
-                } else {
-                    alert("No tienes acceso a esta página.");
-                    await auth0.logout({ returnTo: window.location.origin });
-                }
-            }
-
-            document.getElementById("login-button").addEventListener("click", async () => {
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("password").value;
-
-                try {
-                    await auth0.loginWithResourceOwner({ username: email, password });
-                    window.location.reload(); // Recargar la página para verificar el estado de autenticación
-                } catch (error) {
-                    console.error(error); // Muestra el error en la consola
-                    document.getElementById('error-message').textContent = "Error de inicio de sesión. Verifica tus credenciales.";
-                }
-            });
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById('background-music');
             var audioButton = document.getElementById('audio-toggle');
@@ -93,8 +117,6 @@
                 }
             });
         });
-
-        checkAuth(); // Inicializa Auth0 y verifica el estado de autenticación
     </script>
 
 </body>
