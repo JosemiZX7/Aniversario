@@ -120,7 +120,7 @@
 </head>
 <body>
 
-    <div class="content">
+    <div class="content" id="content">
         <h1>Feliz Segundo Aniversario</h1>
         <p>Celebrando nuestro amor y los recuerdos que hemos ido creando juntos, he diseñado esta página especialmente para ti</p>
         <p>Espero que te gusten las sorpresas que te he preparado para este día tan especial.</p>
@@ -153,41 +153,44 @@
         const domain = "dev-ozc6do24dss5u110.us.auth0.com"; // Ejemplo: "tu-dominio.auth0.com"
         const clientId = "dKNoh2Bwn9zgOvFr1XIlI3JjSCJJ3pmJ"; // Ejemplo: "tu_client_id"
 
-        const auth0 = await createAuth0Client({
-            domain: domain,
-            client_id: clientId,
-        });
+        // Función asincrónica para inicializar Auth0 y verificar autenticación
+        async function initAuth0() {
+            const auth0 = await createAuth0Client({
+                domain: domain,
+                client_id: clientId,
+            });
 
-        // Mostrar contenedor de inicio de sesión si no está autenticado
-        async function checkAuth() {
+            // Mostrar contenedor de inicio de sesión si no está autenticado
             const isAuthenticated = await auth0.isAuthenticated();
-            
+
             if (!isAuthenticated) {
                 document.getElementById('login-container').style.display = 'flex';
+                document.getElementById('content').style.display = 'none'; // Oculta el contenido
             } else {
                 const user = await auth0.getUser();
                 const allowedEmails = ["noeliacn1512@gmail.com", "jm.josemi38@gmail.com"]; // Reemplaza con los correos de los usuarios permitidos
 
                 if (allowedEmails.includes(user.email)) {
-                    document.querySelector('.content').style.display = 'block'; // Muestra el contenido si el usuario es permitido
+                    document.getElementById('content').style.display = 'block'; // Muestra el contenido si el usuario es permitido
                 } else {
                     alert("No tienes acceso a esta página.");
                     await auth0.logout({ returnTo: window.location.origin });
                 }
             }
+
+            // Evento para el botón de inicio de sesión
+            document.getElementById("login-button").addEventListener("click", async () => {
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+
+                try {
+                    await auth0.loginWithResourceOwner({ username: email, password });
+                    window.location.reload(); // Recargar la página para verificar el estado de autenticación
+                } catch (error) {
+                    document.getElementById('error-message').textContent = "Error de inicio de sesión. Verifica tus credenciales.";
+                }
+            });
         }
-
-        document.getElementById("login-button").addEventListener("click", async () => {
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-
-            try {
-                await auth0.loginWithResourceOwner({ username: email, password });
-                window.location.reload(); // Recargar la página para verificar el estado de autenticación
-            } catch (error) {
-                document.getElementById('error-message').textContent = "Error de inicio de sesión. Verifica tus credenciales.";
-            }
-        });
 
         // Manejar la reproducción de audio
         document.addEventListener('DOMContentLoaded', function() {
@@ -207,7 +210,7 @@
             });
         });
 
-        checkAuth(); // Verificar el estado de autenticación al cargar
+        initAuth0(); // Inicializa Auth0 y verifica el estado de autenticación
     </script>
 
 </body>
