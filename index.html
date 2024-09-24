@@ -1,176 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <script src="https://cdn.auth0.com/js/auth0/9.18/auth0.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Aniversario</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url('https://cdn.pixabay.com/photo/2016/03/09/09/22/heart-1240770_1280.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            position: relative;
-        }
-
-        .content {
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semi-transparente */
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-        }
-
-        .content h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .content p {
-            font-size: 20px;
-            margin-bottom: 40px;
-        }
-
-        .content a {
-            display: inline-block;
-            margin: 10px;
-            padding: 12px 30px;
-            background-color: #ff6347;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 18px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .content a:hover {
-            background-color: #e5533d;
-            transform: scale(1.1);
-        }
-
-        /* Estilo para el botón de control de audio */
-        .audio-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #ff6347;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 16px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .audio-control:hover {
-            background-color: #e5533d;
-            transform: scale(1.1);
-        }
-    </style>
+    <title>Mi Aplicación</title>
+    <script src="https://cdn.auth0.com/js/auth0/9.14/auth0.min.js"></script>
 </head>
 <body>
+    <h1>Bienvenido a mi aplicación</h1>
+    <button id="login">Iniciar sesión</button>
+    <button id="logout">Cerrar sesión</button>
+
     <script>
-    // Configura Auth0
-    const auth0 = new Auth0({
-        domain: 'dev-ozc6do24dss5u110.us.auth0.com',
-        clientID: 'RBek1Phw4xNjnEbpmEElzPoucsWiZBJ0',
-        redirectUri: window.location.href,
-        responseType: 'token id_token',
-        scope: 'openid profile email'
-    });
-
-    // Función para iniciar sesión
-    function login() {
-        auth0.authorize();
-    }
-
-    // Función para manejar la respuesta de autenticación
-    function handleAuthentication() {
-        auth0.parseHash((err, authResult) => {
-            if (err) {
-                console.error(err);
-                return;
-            }
-
-            if (authResult && authResult.accessToken && authResult.idToken) {
-                localStorage.setItem('access_token', authResult.accessToken);
-                localStorage.setItem('id_token', authResult.idToken);
-                window.location.reload(); // Recarga la página para mostrar el contenido
-            }
+        // Inicializar Auth0
+        const auth0 = new Auth0.WebAuth({
+            domain: 'dev-ozc6do24dss5u110.us.auth0.com',
+            clientID: 'RBek1Phw4xNjnEbpmEElzPoucsWiZBJ0',
+            redirectUri: 'https://<tu-usuario>.github.io/<tu-repositorio>/callback',
+            responseType: 'token id_token',
+            scope: 'openid profile'
         });
-    }
 
-    // Verifica si el usuario está autenticado al cargar la página
-    window.onload = function() {
-        handleAuthentication();
+        // Manejar el inicio de sesión
+        document.getElementById('login').onclick = () => {
+            auth0.authorize();
+        };
 
-        if (!localStorage.getItem('access_token')) {
-            document.body.innerHTML = ''; // Limpia el contenido
-            const loginButton = document.createElement('button');
-            loginButton.innerText = 'Iniciar Sesión';
-            loginButton.onclick = login;
-            document.body.appendChild(loginButton); // Muestra botón de inicio de sesión
-        } else {
-            // Aquí puedes mostrar el contenido de la página
-            const contentDiv = document.createElement('div');
-            contentDiv.innerHTML = `
-                <h1>Feliz Segundo Aniversario</h1>
-                <p>Contenido protegido que solo los usuarios autenticados pueden ver.</p>
-            `;
-            document.body.appendChild(contentDiv);
-        }
-    };
-</script>
-    
-    <div class="content">
-        <h1>Feliz Segundo Aniversario</h1>
-        <p>Celebrando nuestro amor y los recuerdos que hemos ido creando juntos, he diseñado esta página especialmente para ti</p>
-        <p>Espero que te gusten las sorpresas que te he preparado para este día tan especial.</p>
-        <a href="Cartita.html">Cartita</a>
-        <a href="Recuerdos.html">Recuerdos</a>
-        <a href="Para Tu.html">Para Tu</a>
-    </div>
+        // Manejar la desconexión
+        document.getElementById('logout').onclick = () => {
+            auth0.logout({
+                returnTo: 'https://josemizx7.github.io/Aniversario/'
+            });
+        };
 
-    <!-- Reproductor de audio invisible -->
-    <audio id="background-music" loop>
-        <source src="Audio/Si Me Lo Pides.mp3" type="audio/mpeg">
-        Tu navegador no soporta la reproducción de audio.
-    </audio>
-
-    <!-- Botón para controlar el audio -->
-    <button class="audio-control" id="audio-toggle">ON</button>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var audio = document.getElementById('background-music');
-            var audioButton = document.getElementById('audio-toggle');
-
-            audio.play(); // Intenta reproducir el audio cuando la página se carga
-
-            audioButton.addEventListener('click', function() {
-                if (audio.paused) {
-                    audio.play();
-                    audioButton.textContent = 'OFF';
-                } else {
-                    audio.pause();
-                    audioButton.textContent = 'ON';
+        // Manejar el callback
+        window.onload = () => {
+            auth0.parseHash((err, authResult) => {
+                if (authResult && authResult.accessToken && authResult.idToken) {
+                    // Guardar tokens en localStorage o estado de tu aplicación
+                    console.log(authResult);
+                    // Redirigir o mostrar información del usuario
+                } else if (err) {
+                    console.log(err);
                 }
             });
-        });
+        };
     </script>
-
 </body>
 </html>
