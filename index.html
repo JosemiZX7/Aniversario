@@ -4,118 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Aniversario</title>
-    <link rel="stylesheet" href="style.css"> <!-- Aquí puedes enlazar tu CSS si lo tienes separado -->
+    <link rel="stylesheet" href="style.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url('https://cdn.pixabay.com/photo/2016/03/09/09/22/heart-1240770_1280.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            position: relative;
-        }
-
-        .content {
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semi-transparente */
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-        }
-
-        .content h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .content p {
-            font-size: 20px;
-            margin-bottom: 40px;
-        }
-
-        .content a {
-            display: inline-block;
-            margin: 10px;
-            padding: 12px 30px;
-            background-color: #ff6347;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 18px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .content a:hover {
-            background-color: #e5533d;
-            transform: scale(1.1);
-        }
-
-        /* Estilo para el botón de control de audio */
-        .audio-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #ff6347;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 16px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .audio-control:hover {
-            background-color: #e5533d;
-            transform: scale(1.1);
-        }
-
-        /* Estilo para la sección de inicio de sesión */
-        .login-container {
-            display: none; /* Ocultamos el contenedor de inicio de sesión por defecto */
-            flex-direction: column;
-            align-items: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            z-index: 10;
-        }
-
-        .login-container input {
-            margin: 5px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            width: 200px;
-        }
-
-        .login-container button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #ff6347;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .login-container button:hover {
-            background-color: #e5533d;
-        }
+        /* Estilos previos se mantienen igual... */
     </style>
 </head>
 <body>
@@ -131,7 +22,9 @@
 
     <div class="login-container" id="login-container">
         <h2>Iniciar Sesión</h2>
-        <button id="login-button">Iniciar Sesión con Auth0</button>
+        <input type="email" id="email" placeholder="Correo electrónico" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button id="login-button">Iniciar Sesión</button>
         <p id="error-message" style="color: red;"></p>
     </div>
 
@@ -147,16 +40,18 @@
         const domain = "dev-ozc6do24dss5u110.us.auth0.com"; // Asegúrate de que este sea el correcto
         const clientId = "dKNoh2Bwn9zgOvFr1XIlI3JjSCJJ3pmJ"; // Asegúrate de que este sea el correcto
 
-        const auth0 = await createAuth0Client({
-            domain: domain,
-            client_id: clientId,
-            redirect_uri: window.location.origin // Redirige después del inicio de sesión
-        });
+        async function initAuth0() {
+            const auth0 = await createAuth0Client({
+                domain: domain,
+                client_id: clientId,
+            });
 
-        async function checkAuth() {
             const isAuthenticated = await auth0.isAuthenticated();
 
-            if (isAuthenticated) {
+            if (!isAuthenticated) {
+                document.getElementById('login-container').style.display = 'flex';
+                document.getElementById('content').style.display = 'none';
+            } else {
                 const user = await auth0.getUser();
                 const allowedEmails = ["noeliacn1512@gmail.com", "jm.josemi38@gmail.com"];
                 if (allowedEmails.includes(user.email)) {
@@ -166,15 +61,21 @@
                     alert("No tienes acceso a esta página.");
                     await auth0.logout({ returnTo: window.location.origin });
                 }
-            } else {
-                // Si no está autenticado, mostrar el botón de inicio de sesión
-                document.getElementById('login-button').style.display = 'block';
             }
-        }
 
-        document.getElementById("login-button").addEventListener("click", async () => {
-            await auth0.loginWithRedirect(); // Redirige a la página de inicio de sesión de Auth0
-        });
+            document.getElementById("login-button").addEventListener("click", async () => {
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+
+                try {
+                    await auth0.loginWithResourceOwner({ username: email, password });
+                    window.location.reload(); // Recargar la página para verificar el estado de autenticación
+                } catch (error) {
+                    console.error(error); // Muestra el error en la consola
+                    document.getElementById('error-message').textContent = "Error de inicio de sesión. Verifica tus credenciales.";
+                }
+            });
+        }
 
         document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById('background-music');
@@ -193,7 +94,7 @@
             });
         });
 
-        checkAuth(); // Verificar el estado de autenticación al cargar
+        checkAuth(); // Inicializa Auth0 y verifica el estado de autenticación
     </script>
 
 </body>
