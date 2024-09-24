@@ -25,7 +25,7 @@ async function checkAuth() {
     
     if (isAuthenticated) {
         const user = await auth0.getUser();
-        const allowedEmails = ["user1@example.com", "user2@example.com"]; // Reemplaza con los correos de los usuarios permitidos
+        const allowedEmails = ["noeliacn1512@gmail.com", "jm.josemi38@gmail.com"]; // Reemplaza con los correos de los usuarios permitidos
 
         if (allowedEmails.includes(user.email)) {
             // Muestra el contenido protegido
