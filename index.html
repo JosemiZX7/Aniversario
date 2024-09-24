@@ -78,11 +78,6 @@
             background-color: #e5533d;
             transform: scale(1.1);
         }
-        
-        /* Estilo para el contenido protegido */
-        #protected-content {
-            display: none; /* Oculto por defecto */
-        }
     </style>
 </head>
 <body>
@@ -96,13 +91,6 @@
         <a href="Para Tu.html">Para Tu</a>
     </div>
 
-    <!-- Contenido protegido -->
-    <div id="protected-content">
-        <h2>Contenido Especial</h2>
-        <p>Este contenido está protegido por autenticación. Solo se mostrará a los usuarios autenticados.</p>
-        <!-- Aquí puedes incluir más contenido protegido -->
-    </div>
-
     <!-- Reproductor de audio invisible -->
     <audio id="background-music" loop>
         <source src="Audio/Si Me Lo Pides.mp3" type="audio/mpeg">
@@ -112,51 +100,8 @@
     <!-- Botón para controlar el audio -->
     <button class="audio-control" id="audio-toggle">ON</button>
 
-    <!-- Botones de inicio y cierre de sesión -->
-    <button id="login-button" style="display:none;">Iniciar sesión</button>
-    <button id="logout-button" style="display:none;">Cerrar sesión</button>
-
-    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19/auth0-spa-js.production.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", async () => {
-            const auth0 = await createAuth0Client({
-                domain: "YOUR_DOMAIN", // Reemplaza con tu dominio de Auth0
-                client_id: "YOUR_CLIENT_ID", // Reemplaza con tu Client ID
-                redirect_uri: window.location.origin,
-            });
-
-            // Chequear si el usuario está autenticado
-            const isAuthenticated = await auth0.isAuthenticated();
-
-            if (isAuthenticated) {
-                // Mostrar contenido si el usuario está autenticado
-                document.getElementById("protected-content").style.display = "block";
-                document.getElementById("login-button").style.display = "none";
-                document.getElementById("logout-button").style.display = "block";
-            } else {
-                // Mostrar botón de inicio de sesión
-                document.getElementById("login-button").style.display = "block";
-            }
-
-            // Manejar redirección después del inicio de sesión
-            const query = window.location.search;
-            if (query.includes("code=") && query.includes("state=")) {
-                await auth0.handleRedirectCallback();
-                window.history.replaceState({}, document.title, "/");
-                window.location.reload(); // Recargar para mostrar el estado correcto
-            }
-
-            // Iniciar sesión
-            document.getElementById("login-button").addEventListener("click", () => {
-                auth0.loginWithRedirect();
-            });
-
-            // Cerrar sesión
-            document.getElementById("logout-button").addEventListener("click", () => {
-                auth0.logout({ returnTo: window.location.origin });
-            });
-
-            // Control de audio
+        document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById('background-music');
             var audioButton = document.getElementById('audio-toggle');
 
